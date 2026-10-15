@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, BackHandler, Linking } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
 import { BusyOverlay } from './src/components/ui';
 import { countPages, friendlyError } from './src/pdf/ops';
 import EditPageScreen from './src/screens/EditPageScreen';
@@ -84,7 +85,7 @@ export default function App() {
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.primary }} edges={['top']}>
         <StatusBar style="light" />
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }} edges={['bottom', 'left', 'right']}>
-          {screen}
+          <ErrorBoundary onReset={() => setStack([{ name: 'home' }])}>{screen}</ErrorBoundary>
         </SafeAreaView>
         <BusyOverlay label={busy} />
       </SafeAreaView>

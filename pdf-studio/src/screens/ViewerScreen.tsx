@@ -1,7 +1,7 @@
 import * as Sharing from 'expo-sharing';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import Pdf from 'react-native-pdf';
+import Pdf from '../components/PdfView';
 import {
   ActionSheet,
   BusyOverlay,
@@ -245,11 +245,11 @@ export default function ViewerScreen({ id, nav }: { id: string; nav: Nav }) {
           enableAntialiasing
           trustAllCerts={false}
           style={st.pdf}
-          onLoadComplete={(n) => {
+          onLoadComplete={(n: number) => {
             setTotal(n);
             if (n !== meta.pageCount) updatePageCount(meta, n).then(setMeta);
           }}
-          onPageChanged={(p, n) => {
+          onPageChanged={(p: number, n: number) => {
             setPage(p);
             setTotal(n);
             pageMemory[id] = p;

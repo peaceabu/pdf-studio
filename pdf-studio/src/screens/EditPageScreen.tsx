@@ -11,7 +11,7 @@ import {
   View,
   type LayoutChangeEvent,
 } from 'react-native';
-import Pdf from 'react-native-pdf';
+import Pdf from '../components/PdfView';
 import Svg, { Image as SvgImage, Path, Rect, Text as SvgText } from 'react-native-svg';
 import { BusyOverlay, Header, IconButton, PromptModal, type IconName, type PromptConfig } from '../components/ui';
 import { pageGeo } from '../pdf/coords';
